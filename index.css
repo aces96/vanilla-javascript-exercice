@@ -9,10 +9,14 @@ body {
 
 
 .container {
+    padding: 2rem;
     width: 80%;
+    height: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 5px;
+    box-shadow:  5px 5px 5px rgba(0, 0, 0, 0.3);
 
 }
 
@@ -44,9 +48,15 @@ table{
     }
 
     #status{
+        padding: 3px;
         height: 1rem;
         width:  100%;
-        background-color: green;
+        background-color: #62bb47;
         color: white;
         font-size: 10px;
+        border-radius: 5px;
+    }
+
+    i {
+        cursor: pointer;
     }
