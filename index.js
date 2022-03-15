@@ -9,6 +9,18 @@ const etat = document.getElementById('etat')
 const username = document.getElementById('username')
 const matricule = document.getElementById('document')
 
+let allTableRows = {
+    id: document.getElementById('idColumn'),
+    nom: document.getElementById('nomColumn'),
+    prenom: document.getElementById('prenomColumn'),
+    matricule: document.getElementById('matrColumn'),
+    date: document.getElementById('dateColumn'),
+    username: document.getElementById('usernameColumn'),
+    status:  document.getElementById('statusColumn')
+
+
+}
+
 let users = [
     {
         id: "123456789",
@@ -83,9 +95,35 @@ function closeModal() {
 
     cleanUsersArray(users)
 
-    let tableRow = document.createElement('td')
+    users.forEach(user=>{
+        allTableRows.id.textContent(user.id)
+        allTableRows.date.textContent(`${user.createdDate.split('-')[1]}/${user.createdDate.split('-')[2]}/${user.createdDate.split('-')[0]}`)
+        allTableRows.nom.textContent(user.lastName)
+        // document.getElementById('prenomColumn').innerText(user.firstName)
+        // document.getElementById('username').innerText(user.username)
+        // document.getElementById('statusColumn').innerText(user.status)
+        // document.getElementById('matrColumn').innerText(user.registrationNumber)
+    })
+
     
 }
+
+
+
+cleanUsersArray(users)
+
+users.forEach(user=>{
+    allTableRows.id.textContent = user.id
+    allTableRows.date.textContent = `${user.createdDate.split('-')[1]}/${user.createdDate.split('-')[2]}/${user.createdDate.split('-')[0]}`
+    allTableRows.nom.textContent = user.lastName 
+    // document.getElementById('idColumn').innerHTML(user.id)
+    // document.getElementById('dateColumn').innerHTML(`${user.createdDate.split('-')[1]}/${user.createdDate.split('-')[2]}/${user.createdDate.split('-')[0]}`)
+    // document.getElementById('nomColumn').innerHTML(user.lastName)
+    // document.getElementById('prenomColumn').innerHTML(user.firstName)
+    // document.getElementById('username').innerHTML(user.username)
+    // document.getElementById('statusColumn').innerHTML(user.status)
+    // document.getElementById('matrColumn').innerHTML(user.registrationNumber)
+})
 
 
 
