@@ -8,7 +8,7 @@ const prenom = document.getElementById("prenom")
 const date = document.getElementById('date')
 const etat = document.getElementById('etat')
 const username = document.getElementById('username')
-const matricule = document.getElementById('document')
+const matricule = document.getElementById('matricule')
 
 let allTableRows = {
     id: document.getElementById("idColumn"),
@@ -52,7 +52,64 @@ let users = [
     }
     ]
 
+    
+
     cleanUsersArray(users)
+    for(var i=0; i < users.length;i++){
+        console.log(users[i])
+        let newRow = document.createElement('tr')
+        let dateColumn = document.createElement('td')
+        let nomColumn = document.createElement('td')
+        let prenomColumn = document.createElement('td')
+        let statusColumn = document.createElement('td')
+        let matrColumn = document.createElement('td')
+        let usernameColumn = document.createElement('td')
+        let idColumn = document.createElement('td')
+        let actionColumn = document.createElement('td')
+        let statusDiv = document.createElement('div')
+        let icon = document.createElement('i')
+    
+    
+            if(users[i].status == 'Validé'){
+                statusDiv.setAttribute('id', 'valide')
+    
+            }else if(users[i].status == 'En validation'){
+                statusDiv.setAttribute('id', 'on-validation')
+    
+            }else {
+                statusDiv.setAttribute('id', 'rejected')
+    
+            }
+    
+    
+    
+    
+        table.appendChild(newRow)
+        newRow.appendChild(idColumn)
+        newRow.appendChild(dateColumn)
+        newRow.appendChild(statusColumn)
+        newRow.appendChild(nomColumn)
+        newRow.appendChild(prenomColumn)
+        newRow.appendChild(usernameColumn)
+        newRow.appendChild(matrColumn)
+        newRow.appendChild(actionColumn)
+        statusColumn.appendChild(statusDiv)
+        actionColumn.appendChild(icon)
+        icon.setAttribute('class', 'fa-solid fa-trash-can')
+    
+    
+        console.log('new element');
+    
+        dateColumn.textContent = `${users[i].createdDate.split('-')[1]}/${users[i].createdDate.split('-')[2]}/${users[i].createdDate.split('-')[0]}`
+        idColumn.textContent = users[i].id 
+        nomColumn.textContent = users[i].lastName 
+        prenomColumn.textContent = users[i].firstName 
+        statusDiv.textContent = users[i].status 
+        usernameColumn.textContent = users[i].userName 
+        matrColumn.textContent = users[i].registrationNumber 
+    }
+
+    
 
 
 
@@ -97,86 +154,91 @@ function closeModal() {
     }
     
     users.push(data)
+    console.log(users)
 
-    cleanUsersArray(users)
-
-    users.forEach(user=>{
-        allTableRows.id.textContent(user.id)
-        allTableRows.date.textContent(`${user.createdDate.split('-')[1]}/${user.createdDate.split('-')[2]}/${user.createdDate.split('-')[0]}`)
-        allTableRows.nom.textContent(user.lastName)
-        // document.getElementById('prenomColumn').innerText(user.firstName)
-        // document.getElementById('username').innerText(user.username)
-        // document.getElementById('statusColumn').innerText(user.status)
-        // document.getElementById('matrColumn').innerText(user.registrationNumber)
-    })
 
     
+        console.log(data)
+        let newRow = document.createElement('tr')
+        let dateColumn = document.createElement('td')
+        let nomColumn = document.createElement('td')
+        let prenomColumn = document.createElement('td')
+        let statusColumn = document.createElement('td')
+        let matrColumn = document.createElement('td')
+        let usernameColumn = document.createElement('td')
+        let idColumn = document.createElement('td')
+        let actionColumn = document.createElement('td')
+        let statusDiv = document.createElement('div')
+        let icon = document.createElement('i')
+    
+    
+            if(data.status == 'Validé' || data.status == 'validé' ){
+                statusDiv.setAttribute('id', 'valide')
+    
+            }else if(data.status == 'En validation'|| data.status == 'en validation'){
+                statusDiv.setAttribute('id', 'on-validation')
+    
+            }else {
+                statusDiv.setAttribute('id', 'rejected')
+    
+            }
+    
+    
+    
+    
+        table.appendChild(newRow)
+        newRow.appendChild(idColumn)
+        newRow.appendChild(dateColumn)
+        newRow.appendChild(statusColumn)
+        newRow.appendChild(nomColumn)
+        newRow.appendChild(prenomColumn)
+        newRow.appendChild(usernameColumn)
+        newRow.appendChild(matrColumn)
+        newRow.appendChild(actionColumn)
+        statusColumn.appendChild(statusDiv)
+        actionColumn.appendChild(icon)
+
+        icon.setAttribute('class', 'fa-solid fa-trash-can')
+        idColumn.setAttribute('id', 'idColumn')
+        dateColumn.setAttribute('id', 'dateColumn')
+        nomColumn.setAttribute('id', 'nomColumn')
+        prenomColumn.setAttribute('id', 'prenomColumn')
+        usernameColumn.setAttribute('id', 'usernameColumn')
+        matrColumn.setAttribute('id', 'matrColumn')
+    
+    
+        console.log('new element');
+    
+        dateColumn.textContent = `${data.createdDate}`
+        idColumn.textContent = data.id 
+        nomColumn.textContent = data.lastName 
+        prenomColumn.textContent = data.firstName 
+        statusDiv.textContent = data.status 
+        usernameColumn.textContent = data.userName 
+        matrColumn.textContent = data.registrationNumber 
+        console.log(data)
+    
+
+    modal.style.display = "none";
+
+
+}
+
+
+
+function checkDateForm(date, array){
+    if('T' in date){
+        cleanUsersArray(array)
+        return `${array[i].createdDate.split('-')[1]}/${array[i].createdDate.split('-')[2]}/${array[i].createdDate.split('-')[0]}`
+
+    }else {
+        return date
+    }
 }
 
 
 
 
-for(var i=0; i < users.length;i++){
-    console.log(users[i])
-    let newRow = document.createElement('tr')
-    let dateColumn = document.createElement('td')
-    let nomColumn = document.createElement('td')
-    let prenomColumn = document.createElement('td')
-    let statusColumn = document.createElement('td')
-    let matrColumn = document.createElement('td')
-    let usernameColumn = document.createElement('td')
-    let idColumn = document.createElement('td')
-    let actionColumn = document.createElement('td')
-    let statusDiv = document.createElement('div')
-    let icon = document.createElement('i')
-
-
-        if(users[i].status == 'Validé'){
-            statusDiv.setAttribute('id', 'valide')
-
-        }else if(users[i].status == 'En validation'){
-            statusDiv.setAttribute('id', 'on-validation')
-
-        }else {
-            statusDiv.setAttribute('id', 'rejected')
-
-        }
-
-
-
-
-    table.appendChild(newRow)
-    newRow.appendChild(idColumn)
-    newRow.appendChild(dateColumn)
-    newRow.appendChild(statusColumn)
-    newRow.appendChild(nomColumn)
-    newRow.appendChild(prenomColumn)
-    newRow.appendChild(usernameColumn)
-    newRow.appendChild(matrColumn)
-    newRow.appendChild(actionColumn)
-    statusColumn.appendChild(statusDiv)
-    actionColumn.appendChild(icon)
-    icon.setAttribute('class', 'fa-solid fa-trash-can')
-
-
-    console.log('new element');
-
-    dateColumn.textContent = users[i].createdDate 
-    idColumn.textContent = users[i].id 
-    nomColumn.textContent = users[i].lastName 
-    prenomColumn.textContent = users[i].firstName 
-    statusDiv.textContent = users[i].status 
-    usernameColumn.textContent = users[i].userName 
-    matrColumn.textContent = users[i].registrationNumber 
-}
-
-// .textContent = users[i].lastName
-// .textContent = users[i].lastName
-// .textContent = users[i].userName
-// .textContent = users[i].id
-// .textContent = users[i].firstName
-// .textContent = users[i].status
-// .textContent = `${users[i].createdDate.split('-')[1]}/${users[i].createdDate.split('-')[2]}/${users[i].createdDate.split('-')[0]}`
 
 
 
@@ -187,13 +249,8 @@ for(var i=0; i < users.length;i++){
 
 
 
-// allTableRows.id.textContent = users[i].id
-// allTableRows.date.textContent = `${users[i].createdDate.split('-')[1]}/${users[i].createdDate.split('-')[2]}/${users[i].createdDate.split('-')[0]}`
-// allTableRows.nom.textContent = users[i].lastName 
-// allTableRows.prenom.textContent = users[i].firstName
-// allTableRows.matricule.textContent = users[i].registrationNumber
-// allTableRows.status.textContent = users[i].status
-// allTableRows.username.textContent = users[i].userName
+
+
 
 
 
