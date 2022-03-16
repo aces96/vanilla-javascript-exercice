@@ -9,7 +9,7 @@ const date = document.getElementById('date')
 const etat = document.getElementById('etat')
 const username = document.getElementById('username')
 const matricule = document.getElementById('matricule')
-const icon = document.getElementsByClassName('fa-solid')
+const icon = document.getElementsByClassName('fa-solid fa-trash-can')
 
 let allTableRows = {
     id: document.getElementById("idColumn"),
@@ -119,7 +119,13 @@ let users = [
 
 ajouter.addEventListener("click",showModal)
 submit.addEventListener("click", closeModal)
-icon.addEventListener('click', handleDelete(icon))
+
+for(i = 0; i < icon.length; i++)
+icon[i].addEventListener('click', (e)=>{
+    let row = e.target.parentNode.parentNode
+    row.parentNode.removeChild(row);
+
+})
 
 
 
@@ -137,11 +143,7 @@ function cleanUsersArray(array){
 
 }
 
-function handleDelete(btn){
-    var row = btn.parentNode.parentNode;
-        row.parentNode.removeChild(row);
 
-}
 
 
 
