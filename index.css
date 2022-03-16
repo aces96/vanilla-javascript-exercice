@@ -121,6 +121,26 @@ table{
         border-radius: 5px;
     }
 
+    #on-validation{
+        padding: 3px;
+        height: 1rem;
+        width:  100%;
+        background-color: #FDB64D;
+        color: white;
+        font-size: 10px;
+        border-radius: 5px;
+    }
+
+    #rejected{
+        padding: 3px;
+        height: 1rem;
+        width:  100%;
+        background-color: #FF0000;
+        color: white;
+        font-size: 10px;
+        border-radius: 5px;
+    }
+
     i {
         cursor: pointer;
     }
